@@ -1,0 +1,354 @@
+/* Posture Correction Styles — V2 (Side-Panel Layout) */
+.posture-page {
+    min-height: 100vh;
+    padding: var(--space-4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.posture-container {
+    width: 100%;
+    max-width: 700px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Exercise selection grid */
+.posture-exercise-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
+}
+
+.posture-exercise-card {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    height: 180px;
+    border: none;
+    padding: 0;
+}
+
+.posture-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--duration-slow) var(--ease-out);
+}
+
+.posture-exercise-card:hover .posture-card-img {
+    transform: scale(1.08);
+}
+
+.posture-card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 30%, rgba(11, 14, 20, 0.9) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: var(--space-4);
+}
+
+.posture-card-name {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--text-xl);
+    color: white;
+}
+
+.posture-card-checks {
+    font-size: var(--text-xs);
+    color: var(--color-accent);
+    font-weight: 500;
+}
+
+/* ============================================================
+   HEADER — compact
+   ============================================================ */
+.posture-header {
+    width: 100%;
+    max-width: 960px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--space-3);
+    gap: var(--space-3);
+}
+
+.posture-exercise-name {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-weight: 700;
+    font-size: var(--text-lg);
+}
+
+/* ============================================================
+   MAIN LAYOUT — camera + side panel
+   ============================================================ */
+.posture-layout {
+    width: 100%;
+    max-width: 960px;
+    display: grid;
+    grid-template-columns: 1fr 220px;
+    gap: var(--space-4);
+    align-items: start;
+}
+
+@media (max-width: 768px) {
+    .posture-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Camera container */
+.posture-camera-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4/3;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    background: var(--bg-surface);
+    border: 2px solid var(--border-subtle);
+}
+
+.posture-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scaleX(-1);
+}
+
+.posture-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: scaleX(-1);
+    pointer-events: none;
+}
+
+.posture-camera-prompt {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(11, 14, 20, 0.8);
+}
+
+/* Body detection pill */
+.posture-body-indicator {
+    position: absolute;
+    top: var(--space-2);
+    left: 50%;
+    transform: translateX(-50%);
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-full);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    z-index: 10;
+    backdrop-filter: blur(8px);
+}
+
+.posture-body-indicator.detected {
+    background: rgba(0, 230, 118, 0.2);
+    color: var(--color-accent);
+    border: 1px solid rgba(0, 230, 118, 0.3);
+}
+
+.posture-body-indicator.not-detected {
+    background: rgba(255, 61, 113, 0.2);
+    color: var(--color-coral);
+    border: 1px solid rgba(255, 61, 113, 0.3);
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* ============================================================
+   SIDE PANEL — score, stats, feedback
+   ============================================================ */
+.posture-side-panel {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+/* Big score card */
+.posture-score-card {
+    text-align: center;
+    padding: var(--space-5) var(--space-3);
+    border: 1px solid var(--border-subtle);
+    transition: border-color var(--duration-fast);
+}
+
+.posture-score-card.good {
+    border-color: rgba(0, 230, 118, 0.3);
+}
+
+.posture-score-card.ok {
+    border-color: rgba(255, 214, 0, 0.3);
+}
+
+.posture-score-card.bad {
+    border-color: rgba(255, 61, 113, 0.3);
+}
+
+.posture-score-big {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: var(--space-1);
+}
+
+.posture-score-card.good .posture-score-big {
+    color: var(--color-accent);
+}
+
+.posture-score-card.ok .posture-score-big {
+    color: var(--color-energy);
+}
+
+.posture-score-card.bad .posture-score-big {
+    color: var(--color-coral);
+}
+
+.posture-score-label {
+    font-size: var(--text-xs);
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Mini stats row */
+.posture-stats-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-2);
+}
+
+.posture-mini-stat {
+    text-align: center;
+    padding: var(--space-3) var(--space-1);
+}
+
+.posture-mini-val {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 800;
+    color: var(--color-primary-light);
+}
+
+.posture-mini-label {
+    font-size: 10px;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Feedback chips */
+.posture-feedback-chips {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.posture-chip {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-md);
+    background: var(--bg-glass);
+    font-size: var(--text-xs);
+    line-height: 1.3;
+}
+
+.posture-chip-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.posture-chip-dot.good {
+    background: var(--color-accent);
+    box-shadow: 0 0 6px var(--color-accent-glow);
+}
+
+.posture-chip-dot.ok,
+.posture-chip-dot.warning {
+    background: var(--color-energy);
+}
+
+.posture-chip-dot.bad {
+    background: var(--color-coral);
+    box-shadow: 0 0 6px rgba(255, 61, 113, 0.3);
+}
+
+.posture-chip-text {
+    color: var(--text-secondary);
+}
+
+/* ============================================================
+   MOBILE: side panel goes below camera
+   ============================================================ */
+@media (max-width: 768px) {
+    .posture-side-panel {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: var(--space-2);
+    }
+
+    .posture-score-card {
+        flex: 1;
+        min-width: 100px;
+        padding: var(--space-3);
+    }
+
+    .posture-score-big {
+        font-size: 2rem;
+    }
+
+    .posture-stats-row {
+        flex: 1;
+        min-width: 200px;
+    }
+
+    .posture-feedback-chips {
+        width: 100%;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .posture-chip {
+        flex: 1;
+        min-width: 140px;
+    }
+}
+
+/* Voice line display */
+.posture-voice-display {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-3);
+    margin-top: var(--space-1);
+    border-left: 2px solid var(--color-primary);
+}
+
+.voice-icon {
+    font-size: 0.9rem;
+    flex-shrink: 0;
+}
+
+.voice-text {
+    font-size: var(--text-xs);
+    color: var(--text-secondary);
+    line-height: 1.3;
+    font-style: italic;
+}

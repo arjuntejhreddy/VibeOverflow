@@ -1,0 +1,187 @@
+/* ============================================================
+   Weekly Plan Styles
+   ============================================================ */
+
+.plan-page {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: var(--space-6);
+    padding-bottom: var(--space-16);
+}
+
+.plan-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: var(--space-6);
+    gap: var(--space-4);
+}
+
+/* Day cards */
+.plan-week {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.plan-day {
+    overflow: hidden;
+    transition: all var(--duration-normal) var(--ease-out);
+}
+
+.plan-day.rest-day {
+    opacity: 0.7;
+}
+
+.plan-day-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-4) var(--space-5);
+    cursor: pointer;
+}
+
+.plan-day-info {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+}
+
+.plan-day-name {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--text-base);
+}
+
+.plan-day-type {
+    font-size: var(--text-sm);
+    color: var(--text-tertiary);
+}
+
+.plan-day-type.rest {
+    color: var(--color-accent);
+}
+
+.plan-day-toggle {
+    font-size: var(--text-xl);
+    color: var(--text-tertiary);
+    font-weight: 700;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-full);
+    transition: all var(--duration-fast) var(--ease-out);
+}
+
+.plan-day:hover .plan-day-toggle {
+    background: var(--bg-glass-hover);
+}
+
+/* Day content */
+.plan-day-content {
+    padding: 0 var(--space-5) var(--space-5);
+    animation: fadeInUp 0.3s var(--ease-out);
+}
+
+/* Exercise item */
+.plan-exercise {
+    padding: var(--space-4);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--space-3);
+    background: var(--bg-glass);
+}
+
+.plan-exercise.warmup,
+.plan-exercise.cooldown {
+    border-style: dashed;
+    opacity: 0.75;
+}
+
+.plan-exercise-badge {
+    font-size: var(--text-xs);
+    font-weight: 700;
+    color: var(--color-accent);
+    letter-spacing: 0.1em;
+    margin-bottom: var(--space-2);
+}
+
+.plan-exercise-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: var(--space-3);
+}
+
+.plan-exercise-name {
+    font-weight: 600;
+    margin-bottom: var(--space-1);
+}
+
+.plan-exercise-detail {
+    font-size: var(--text-sm);
+    color: var(--color-primary-light);
+    font-weight: 500;
+}
+
+.plan-exercise-why {
+    font-size: var(--text-sm);
+    color: var(--text-tertiary);
+    line-height: 1.5;
+}
+
+.plan-exercise-actions {
+    display: flex;
+    gap: var(--space-1);
+}
+
+/* Three layers */
+.plan-layers {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.plan-layer {
+    display: flex;
+    gap: var(--space-3);
+    font-size: var(--text-sm);
+    line-height: 1.5;
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-md);
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.plan-layer.tired {
+    background: rgba(245, 158, 11, 0.06);
+}
+
+.plan-layer-label {
+    font-weight: 700;
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-primary-light);
+    min-width: 48px;
+    padding-top: 2px;
+}
+
+.plan-layer.tired .plan-layer-label {
+    color: var(--color-energy);
+}
+
+/* Rest content */
+.rest-content {
+    color: var(--text-secondary);
+    font-size: var(--text-sm);
+}
+
+.rest-list {
+    list-style: none;
+    margin-top: var(--space-3);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
