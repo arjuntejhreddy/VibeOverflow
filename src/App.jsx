@@ -2,6 +2,7 @@ import React from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import { useUser } from './context/UserContext'
 import { useAuth } from './context/AuthContext'
+import DashboardLayout from './components/DashboardLayout'
 import OnboardingWizard from './pages/Onboarding/OnboardingWizard'
 import Dashboard from './pages/Dashboard/Dashboard'
 import WorkoutSession from './pages/Workout/WorkoutSession'
@@ -22,7 +23,7 @@ export default function App() {
             <div className="app-loading">
                 <div className="bg-gradient-mesh" />
                 <div className="loading-pulse">
-                    <span className="loading-logo">✦</span>
+                    <span className="loading-logo">V</span>
                 </div>
             </div>
         )
@@ -42,8 +43,7 @@ export default function App() {
     }
 
     return (
-        <>
-            <div className="bg-gradient-mesh" />
+        <DashboardLayout>
             <Routes>
                 <Route
                     path="/"
@@ -64,6 +64,6 @@ export default function App() {
                 <Route path="/twin/reveal" element={<TwinReveal />} />
                 <Route path="/twin" element={<TwinDashboard />} />
             </Routes>
-        </>
+        </DashboardLayout>
     )
 }
