@@ -43,27 +43,34 @@ export default function App() {
     }
 
     return (
-        <DashboardLayout>
-            <Routes>
-                <Route
-                    path="/"
-                    element={
-                        state.onboardingComplete
-                            ? <Navigate to="/dashboard" replace />
-                            : <Navigate to="/onboarding" replace />
-                    }
-                />
-                <Route path="/auth" element={<Navigate to="/dashboard" replace />} />
-                <Route path="/onboarding" element={<OnboardingWizard />} />
-                <Route path="/dashboard" element={<Dashboard />} />
-                <Route path="/workout" element={<WorkoutSession />} />
-                <Route path="/posture" element={<PostureSession />} />
-                <Route path="/nutrition" element={<NutritionPage />} />
-                <Route path="/progress" element={<ProgressPage />} />
-                <Route path="/plan" element={<WeeklyPlan />} />
-                <Route path="/twin/reveal" element={<TwinReveal />} />
-                <Route path="/twin" element={<TwinDashboard />} />
-            </Routes>
-        </DashboardLayout>
+        <Routes>
+            {/* Onboarding — full screen, no sidebar/header */}
+            <Route path="/onboarding" element={<OnboardingWizard />} />
+
+            {/* All other authenticated pages — inside DashboardLayout */}
+            <Route path="/*" element={
+                <DashboardLayout>
+                    <Routes>
+                        <Route
+                            path="/"
+                            element={
+                                state.onboardingComplete
+                                    ? <Navigate to="/dashboard" replace />
+                                    : <Navigate to="/onboarding" replace />
+                            }
+                        />
+                        <Route path="/auth" element={<Navigate to="/dashboard" replace />} />
+                        <Route path="/dashboard" element={<Dashboard />} />
+                        <Route path="/workout" element={<WorkoutSession />} />
+                        <Route path="/posture" element={<PostureSession />} />
+                        <Route path="/nutrition" element={<NutritionPage />} />
+                        <Route path="/progress" element={<ProgressPage />} />
+                        <Route path="/plan" element={<WeeklyPlan />} />
+                        <Route path="/twin/reveal" element={<TwinReveal />} />
+                        <Route path="/twin" element={<TwinDashboard />} />
+                    </Routes>
+                </DashboardLayout>
+            } />
+        </Routes>
     )
 }
