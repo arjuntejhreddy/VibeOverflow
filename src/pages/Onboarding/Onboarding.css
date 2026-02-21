@@ -2,6 +2,98 @@
    Onboarding Styles
    ============================================================ */
 
+/* --- Split Layout (image + form) --- */
+.onboarding-split {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Image panel — desktop left side */
+.onboarding-image-panel {
+    display: none;
+    flex: 0 0 42%;
+    position: relative;
+    overflow: hidden;
+}
+
+@media (min-width: 900px) {
+    .onboarding-image-panel {
+        display: block;
+    }
+}
+
+.onboarding-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+}
+
+.onboarding-img-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0.15) 0%,
+            rgba(0, 0, 0, 0.55) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: var(--space-10) var(--space-8);
+}
+
+.onboarding-img-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.onboarding-img-brand {
+    font-family: var(--font-display);
+    font-size: var(--text-sm);
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.5);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    position: absolute;
+    top: var(--space-8);
+    left: var(--space-8);
+}
+
+.onboarding-img-quote {
+    font-size: var(--text-xl);
+    font-weight: 600;
+    color: white;
+    line-height: 1.4;
+    font-style: italic;
+    margin-bottom: var(--space-2);
+}
+
+.onboarding-img-progress {
+    height: 3px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+}
+
+.onboarding-img-progress-fill {
+    height: 100%;
+    background: white;
+    border-radius: var(--radius-full);
+    transition: width 0.4s var(--ease-out);
+}
+
+.onboarding-img-step-count {
+    font-size: var(--text-xs);
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 600;
+}
+
+/* Form panel — right side (full width on mobile) */
+.onboarding-split>.onboarding {
+    flex: 1;
+    overflow-y: auto;
+}
+
 .onboarding {
     min-height: 100vh;
     display: flex;

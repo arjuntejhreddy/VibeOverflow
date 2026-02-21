@@ -106,12 +106,17 @@ export const MEAL_IMAGES = {
     snack: 'https://images.unsplash.com/photo-1599490659213-e2b9527bd087?w=400&h=250&fit=crop',
 }
 
-// Hero / feature images
+// Hero / feature images — real people working out
 export const HERO_IMAGES = {
-    workout: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&h=400&fit=crop',
+    // Auth page — man lifting weights in gym, focused & intense
+    workout: 'https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=1200&h=1800&fit=crop&q=85',
+    // Dashboard hero — athlete training hard in gym
+    dashboard: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=1200&h=900&fit=crop&q=85',
+    // Onboarding — person jogging/running outdoors, enjoying it
+    onboarding: 'https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=1200&h=1600&fit=crop&q=85',
     posture: 'https://images.unsplash.com/photo-1518611012118-696072aa579a?w=800&h=400&fit=crop',
     nutrition: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=800&h=400&fit=crop',
-    progress: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=800&h=400&fit=crop',
+    progress: 'https://images.unsplash.com/photo-1550345332-09e3ac987658?w=800&h=400&fit=crop&q=85',
     twin: 'https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=800&h=400&fit=crop',
     plan: 'https://images.unsplash.com/photo-1549060279-7e168fcee0c2?w=800&h=400&fit=crop',
 }

@@ -3,6 +3,7 @@ import { useUser } from '../../context/UserContext'
 import { useNavigate } from 'react-router-dom'
 import { getWorkoutLogs } from '../../db'
 import { calculateStreak, calculateWellnessScore } from '../../utils/scoring'
+import { HERO_IMAGES } from '../../utils/images'
 import './Dashboard.css'
 
 /* Minimal inline SVG icons — no emojis */
@@ -95,6 +96,32 @@ export default function Dashboard() {
 
     return (
         <div className="dashboard animate-fade-in">
+            {/* Hero Image Banner */}
+            <div className="dash-hero-banner">
+                <img
+                    src={HERO_IMAGES.dashboard}
+                    alt="Athlete training"
+                    className="dash-hero-img"
+                />
+                <div className="dash-hero-overlay">
+                    <div className="dash-hero-text">
+                        <p className="dash-hero-sub">Ready to perform</p>
+                        <h2 className="dash-hero-headline">
+                            {archetype ? archetype.name : 'Train Hard'}
+                        </h2>
+                        <p className="dash-hero-tagline">
+                            {archetype ? archetype.tagline : 'Every rep counts.'}
+                        </p>
+                    </div>
+                    <button className="dash-hero-cta btn" onClick={() => navigate('/workout')}>
+                        Start Workout
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
             {/* Metric Cards */}
             <section className="section-container">
                 <div className="metrics-grid stagger-children">
