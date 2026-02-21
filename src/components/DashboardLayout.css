@@ -32,6 +32,17 @@
     border-bottom: 1px solid var(--border-subtle);
 }
 
+.header-brand {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    pointer-events: none;
+    /* don't block clicks on buttons behind it */
+    user-select: none;
+}
+
 .header-left {
     display: flex;
     flex-direction: column;

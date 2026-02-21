@@ -1,6 +1,7 @@
 import React from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
+import MithraFitLogo from './MithraFitLogo'
 import './SidebarNav.css'
 
 const NAV_ITEMS = [
@@ -35,8 +36,8 @@ export default function SidebarNav() {
         <>
             {/* Desktop sidebar */}
             <nav className="sidebar" aria-label="Main navigation">
-                <div className="sidebar-brand" onClick={() => navigate('/dashboard')}>
-                    <span className="sidebar-brand-text">V</span>
+                <div className="sidebar-brand" onClick={() => navigate('/dashboard')} title="MithraFit">
+                    <MithraFitLogo variant="mark" height={34} />
                 </div>
 
                 <div className="sidebar-nav-items">

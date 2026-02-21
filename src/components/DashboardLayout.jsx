@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import { useUser } from '../context/UserContext'
 import SidebarNav from './SidebarNav'
+import MithraFitLogo from './MithraFitLogo'
 import './DashboardLayout.css'
 
 function getGreeting() {
@@ -49,6 +50,11 @@ export default function DashboardLayout({ children }) {
                     <div className="header-left">
                         <p className="header-greeting">{getGreeting()},</p>
                         <h1 className="header-name">{user?.givenName || user?.name || 'Athlete'}</h1>
+                    </div>
+
+                    {/* ── Centred brand wordmark ── */}
+                    <div className="header-brand">
+                        <MithraFitLogo variant="full" height={32} />
                     </div>
                     <div className="header-right">
                         {/* Notification bell */}
