@@ -67,12 +67,48 @@ export default function Dashboard() {
     }
 
     const quickActions = [
-        { icon: ICONS.workout, label: 'Start Workout', desc: 'Live companion with your coach', path: '/workout', theme: 'primary' },
-        { icon: ICONS.plan, label: 'Weekly Plan', desc: '3-layer exercise plan', path: '/plan', theme: 'teal' },
-        { icon: ICONS.camera, label: 'Form Check', desc: 'Camera-based posture correction', path: '/posture', theme: 'blue' },
-        { icon: ICONS.nutrition, label: 'Meal Plan', desc: "Today's meals from your kitchen", path: '/nutrition', theme: 'coral' },
-        { icon: ICONS.progress, label: 'Progress', desc: 'XP, levels & achievements', path: '/progress', theme: 'green' },
-        { icon: ICONS.twin, label: 'Training Twin', desc: 'Your AI training partner', path: '/twin/reveal', theme: 'purple' },
+        {
+            icon: ICONS.workout, label: 'Start Workout',
+            desc: 'Live AI companion coaches you through every rep',
+            path: '/workout', tag: 'Today\'s Session',
+            img: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&h=600&fit=crop&q=80',
+            accent: '#2563EB', size: 'large',
+        },
+        {
+            icon: ICONS.plan, label: 'Weekly Plan',
+            desc: 'Structured 3-layer training program',
+            path: '/plan', tag: 'This Week',
+            img: 'https://images.unsplash.com/photo-1549060279-7e168fcee0c2?w=600&h=400&fit=crop&q=80',
+            accent: '#0891B2', size: 'normal',
+        },
+        {
+            icon: ICONS.camera, label: 'Form Check',
+            desc: 'Real-time camera posture analysis',
+            path: '/posture', tag: 'AI Powered',
+            img: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop&q=80',
+            accent: '#1D4ED8', size: 'normal',
+        },
+        {
+            icon: ICONS.nutrition, label: 'Meal Plan',
+            desc: 'Personalised meals from your cuisine',
+            path: '/nutrition', tag: 'Today\'s Meals',
+            img: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600&h=400&fit=crop&q=80',
+            accent: '#DC2626', size: 'normal',
+        },
+        {
+            icon: ICONS.progress, label: 'Progress',
+            desc: 'XP, streaks, levels & achievements',
+            path: '/progress', tag: 'Analytics',
+            img: 'https://images.unsplash.com/photo-1550345332-09e3ac987658?w=600&h=400&fit=crop&q=80',
+            accent: '#059669', size: 'normal',
+        },
+        {
+            icon: ICONS.twin, label: 'Training Twin',
+            desc: 'Your AI alter ego — trains when you can\'t',
+            path: '/twin/reveal', tag: 'AI Twin',
+            img: 'https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=800&h=600&fit=crop&q=80',
+            accent: '#7C3AED', size: 'large',
+        },
     ]
 
     const metrics = [
@@ -162,26 +198,39 @@ export default function Dashboard() {
                 </section>
             )}
 
-            {/* Quick Actions */}
+            {/* Feature Cards */}
             <section className="section-container">
-                <h2 className="section-title">Quick Actions</h2>
-                <div className="actions-grid stagger-children">
+                <h2 className="section-title">Features</h2>
+                <div className="feature-grid">
                     {quickActions.map((action) => (
                         <button
                             key={action.label}
-                            className="action-card glass-card"
+                            className={`feature-card ${action.size === 'large' ? 'feature-card--large' : ''}`}
                             onClick={() => navigate(action.path)}
+                            style={{ '--accent': action.accent }}
                         >
-                            <div className={`action-icon-wrap action-icon-${action.theme}`}>
-                                <Icon d={action.icon} size={20} />
+                            {/* Background image */}
+                            <img
+                                src={action.img}
+                                alt={action.label}
+                                className="feature-card-img"
+                                loading="lazy"
+                            />
+                            {/* Dark overlay */}
+                            <div className="feature-card-overlay" />
+                            {/* Content */}
+                            <div className="feature-card-content">
+                                <span className="feature-card-tag">{action.tag}</span>
+                                <div className="feature-card-icon">
+                                    <Icon d={action.icon} size={18} />
+                                </div>
+                                <h3 className="feature-card-title">{action.label}</h3>
+                                <p className="feature-card-desc">{action.desc}</p>
+                                <span className="feature-card-cta">
+                                    Open
+                                    <Icon d={ICONS.arrow} size={14} />
+                                </span>
                             </div>
-                            <div className="action-info">
-                                <div className="action-label">{action.label}</div>
-                                <div className="action-desc">{action.desc}</div>
-                            </div>
-                            <span className="action-arrow">
-                                <Icon d={ICONS.arrow} size={16} />
-                            </span>
                         </button>
                     ))}
                 </div>
